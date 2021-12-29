@@ -1,0 +1,86 @@
+.helpdesk-container-target {
+  width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.helpdesk-target-title {
+  margin-bottom: 40px;
+}
+
+.helpdesk-target-title h2 {
+  margin-bottom: 20px;
+}
+
+.helpdesk-table-wrapper {
+  overflow: auto;
+  border: 1px solid #e6e8ec;
+  border-bottom: 0;
+}
+
+.helpdesk-target-singleselect {
+  margin-bottom: 20px;
+}
+
+.helpdesk-target-singleselect .eui-single-select {
+  padding-bottom: 10px;
+}
+
+.helpdesk-target-span-space {
+  padding-left: 5px;
+}
+
+.helpdesk-target-table th:nth-child(2) {
+  background-color: #0073e9;
+  color: #fff;
+  text-align: center;
+}
+
+.helpdesk-target-table th:nth-child(3) {
+  background-color: #de350b;
+  color: #fff;
+  text-align: center;
+}
+
+.helpdesk-target-table th:nth-child(4) {
+  background-color: #00a950;
+  color: #fff;
+  text-align: center;
+}
+
+.helpdesk-target-table td:nth-child(2) {
+  text-align: center;
+  background-color: rgba(66, 165, 245, 0.1);
+}
+
+.helpdesk-target-table td:nth-child(3) {
+  text-align: center;
+  background-color: rgba(129, 199, 132, 0.1);
+}
+
+.helpdesk-target-table td:nth-child(4) {
+  text-align: center;
+  background-color: rgba(244, 64, 72, 0.1);
+}
+
+.helpdesk-target-table-td {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.helpdesk-target-table-td-total {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.helpdesk-target-popover {
+  margin-bottom: 5px;
+}
+
+.helpdesk-target-popover-textfield.eui-text-field {
+  padding-bottom: 5px;
+}
+.helpdesk-target-popover-textfield.eui-text-field .eui-text-field-wrapper {
+  width: 45px;
+}
