@@ -10,122 +10,129 @@ import SingleSelect from 'emerald-ui/lib/SingleSelect';
 import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 
-import './SearchTargetTranscript.css';
+import './SearchTargetTranscript.scss';
 // import PropTypes from 'prop-types';
 
 const SearchTargetTranscript = () => {
   let navigate = useNavigate();
+
   const [show, setShow] = useState(false);
+
+  const handleSearch = () => {
+    setShow(!show);
+  };
+
+  const handleNavegate = () => {
+    navigate('/transcriptview');
+  };
+
   return (
-    <Container>
-      <Row>
-        <Col md={12}>
+    <Container className="helpdesk-search-target-transcript">
+      <Row className="helpdesk-row-center">
+        <Col md={6} lg={6} xs={12}>
           <Panel>
             <Panel.Body>
-              <h1 className="helpdesk-title-search">Transcript Manipulation</h1>
-              <form className="helpdesk-form-search">
-                <Col md={3} className="helpdesk-singleselect-search">
-                  <SingleSelect label="Select State" id="s1">
-                    <option value="first">First</option>
-                    <option value="second">Second</option>
-                    <option value="third">Third</option>
-                    <option value="fourth">Fourth</option>
-                  </SingleSelect>
-                  <SingleSelect label="Select Board" id="s2">
-                    <option value="first">First</option>
-                    <option value="second">Second</option>
-                    <option value="third">Third</option>
-                    <option value="fourth">Fourth</option>
-                  </SingleSelect>
-                  <SingleSelect label="Select Profession" id="s2">
-                    <option value="first">First</option>
-                    <option value="second">Second</option>
-                    <option value="third">Third</option>
-                    <option value="fourth">Fourth</option>
-                  </SingleSelect>
-                  <TextField label="License Number" />
-                  <Button
-                    color="brand"
-                    shape="outline"
-                    onClick={() => {
-                      setShow(!show);
-                    }}
-                  >
-                    Search
-                  </Button>
-                </Col>
+              <h1 className="helpdesk-title">Transcript Manipulation</h1>
+
+              <form className="helpdesk-form">
+                <SingleSelect label="Select State" id="s1">
+                  <option value="first">First</option>
+                  <option value="second">Second</option>
+                  <option value="third">Third</option>
+                  <option value="fourth">Fourth</option>
+                </SingleSelect>
+                <SingleSelect label="Select Board" id="s2">
+                  <option value="first">First</option>
+                  <option value="second">Second</option>
+                  <option value="third">Third</option>
+                  <option value="fourth">Fourth</option>
+                </SingleSelect>
+                <SingleSelect label="Select Profession" id="s2">
+                  <option value="first">First</option>
+                  <option value="second">Second</option>
+                  <option value="third">Third</option>
+                  <option value="fourth">Fourth</option>
+                </SingleSelect>
+                <TextField label="License Number" />
+                <Button color="brand" shape="outline" onClick={handleSearch}>
+                  Search
+                </Button>
               </form>
             </Panel.Body>
           </Panel>
-          {show && (
-            <>
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>License</th>
-                    <th>Profession</th>
-                    <th className="helpdesk-th-singleselect"></th>
-                    <th className="helpdesk-th-simbol"></th>
-                    <th className="helpdesk-th-singleselect"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Jane Doe Doe</td>
-                    <td>RN9999999</td>
-                    <td>Registered Nurse</td>
-                    <td className="helpdesk-singleselect-td">
-                      <SingleSelect ariaLabel="Select Cycle to move credits from">
-                        <option value="first">First</option>
-                        <option value="second">Second</option>
-                        <option value="third">Third</option>
-                        <option value="fourth">Fourth</option>
-                      </SingleSelect>
-                      <span className="helpdesk-label-singleselect-cycle">
-                        Select Cycle to move credits from
-                      </span>
-                    </td>
-                    <td>
-                      <span className="helpdesk-span-position">&#62;</span>
-                    </td>
-                    <td className="helpdesk-singleselect-td">
-                      <SingleSelect
-                        ariaLabel="Select Cycle to move credits to"
-                        className="helpdesk-singleselect"
-                      >
-                        <option value="first">First</option>
-                        <option value="second">Second</option>
-                        <option value="third">Third</option>
-                        <option value="fourth">Fourth</option>
-                      </SingleSelect>
-                      <span className="helpdesk-label-singleselect-cycle">
-                        Select Cycle to move credits to
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              <Panel>
-                <Panel.Body className="helpdesk-button-manipulate-cycle">
-                  {/* <Link to="/transcriptview" className="helpdesk-link-search">
-                    Manipulate
-                  </Link> */}
+        </Col>
+      </Row>
+      {show && (
+        <>
+          <Row>
+            <Col>
+              <div className="helpdesk-table">
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>License</th>
+                      <th>Profession</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Jane Doe Doe</td>
+                      <td>RN9999999</td>
+                      <td>Registered Nurse</td>
+                      <td className="helpdesk-td-select">
+                        <SingleSelect ariaLabel="Select Cycle to move credits from">
+                          <option value="first">First</option>
+                          <option value="second">Second</option>
+                          <option value="third">Third</option>
+                          <option value="fourth">Fourth</option>
+                        </SingleSelect>
+                        <span className="helpdesk-label-select">
+                          Select Cycle to move credits from
+                        </span>
+                      </td>
+                      <td>
+                        <span className="helpdesk-greater-than-sign-position">
+                          &#62;
+                        </span>
+                      </td>
+                      <td className="helpdesk-td-select">
+                        <SingleSelect ariaLabel="Select Cycle to move credits to">
+                          <option value="first">First</option>
+                          <option value="second">Second</option>
+                          <option value="third">Third</option>
+                          <option value="fourth">Fourth</option>
+                        </SingleSelect>
+                        <span className="helpdesk-label-select">
+                          Select Cycle to move credits to
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Panel className="helpdesk-panel">
+                <Panel.Body>
                   <Button
                     color="brand"
                     shape="outline"
-                    onClick={() => {
-                      navigate('/transcriptview');
-                    }}
+                    onClick={handleNavegate}
                   >
                     Manipulate
                   </Button>
                 </Panel.Body>
               </Panel>
-            </>
-          )}
-        </Col>
-      </Row>
+            </Col>
+          </Row>
+        </>
+      )}
     </Container>
   );
 };
