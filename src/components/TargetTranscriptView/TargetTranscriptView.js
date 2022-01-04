@@ -679,10 +679,14 @@ const TargetTranscriptView = () => {
             <Col className="helpdesk-transcript-table-bottom">
               <Link to="#">Did you know's</Link>
               <div className="helpdesk-transcript-buttons">
-                <Button color="info" onClick={handleNavegateMain}>
+                <Button
+                  shape="outline"
+                  color="info"
+                  onClick={handleNavegateMain}
+                >
                   Back to manipulation
                 </Button>
-                <Button color="warning">Test Reallocation</Button>
+                <Button>Test Reallocation</Button>
                 <Button color="info" onClick={openModal}>
                   Apply Manipulation
                 </Button>

@@ -78,6 +78,7 @@
     text-transform: capitalize;
   }
 
+  //popover
   .helpdesk-transcript-popover {
     display: flex;
     justify-content: space-around;
@@ -109,7 +110,6 @@
   }
 }
 
-//popover
 .helpdesk-transcript-popover.eui-popover {
   max-width: 500px;
 
@@ -137,12 +137,15 @@
   }
 }
 
-.helpdesk-transcript-popover-button.eui-btn .eui-btn-styles {
-  all: unset;
+.helpdesk-transcript-popover-button.eui-btn.eui-btn-default .eui-btn-styles {
+  background: none !important;
+  border: none;
+  padding: 0;
   cursor: pointer;
 }
 
-.helpdesk-transcript-popover-button:hover.eui-btn .eui-btn-styles {
+.helpdesk-transcript-popover-button.eui-btn.eui-btn-default:hover
+  .eui-btn-styles {
   text-decoration: underline;
   text-decoration-color: #0073e9;
 }
@@ -174,7 +177,7 @@
   }
 
   .helpdesk-transcript-popover.eui-popover {
-    max-width: 250px;
+    max-width: 280px;
 
     .helpdesk-popover-table {
       .popover-table-th {
@@ -186,12 +189,19 @@
       }
 
       .popover-table-td {
-        padding: 10px 20px;
+        padding: 10px 10px;
         position: relative;
       }
 
       .popover-textfield {
         padding: 0;
+      }
+    }
+  }
+  .helpdesk-transcript-popover.eui-popover {
+    .helpdesk-popover-table {
+      .popover-textfield {
+        width: 55px;
       }
     }
   }

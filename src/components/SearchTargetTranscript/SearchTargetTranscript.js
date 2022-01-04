@@ -117,7 +117,7 @@ const SearchTargetTranscript = () => {
                         <td>
                           <span className="helpdesk-greater-than-sign-position">
                             <Icon
-                              name="chevron_right"
+                              name="arrow_forward"
                               style={{ fontSize: '24px' }}
                               className="text-light"
                             />
@@ -153,7 +153,7 @@ const SearchTargetTranscript = () => {
                         <td>
                           <span className="helpdesk-greater-than-sign-position">
                             <Icon
-                              name="chevron_right"
+                              name="arrow_forward"
                               style={{ fontSize: '24px' }}
                               className="text-light"
                             />
@@ -192,7 +192,7 @@ const SearchTargetTranscript = () => {
                       </SingleSelect>
                       <span className="helpdesk-greater-than-sign-position-mobile">
                         <Icon
-                          name="expand_more"
+                          name="arrow_downward"
                           style={{ fontSize: '24px' }}
                           className="text-light"
                         />
@@ -224,7 +224,7 @@ const SearchTargetTranscript = () => {
                       </SingleSelect>
                       <span className="helpdesk-greater-than-sign-position-mobile">
                         <Icon
-                          name="expand_more"
+                          name="arrow_downward"
                           style={{ fontSize: '24px' }}
                           className="text-light"
                         />
