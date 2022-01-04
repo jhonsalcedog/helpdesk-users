@@ -30,21 +30,53 @@
 
     .helpdesk-greater-than-sign-position {
       position: relative;
-      bottom: 10px;
+      bottom: 8px;
     }
   }
 
   .helpdesk-panel {
     text-align: right;
   }
+
+  .helpdesk-target-card {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+
+  .helpdesk-target-select {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+  }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 991px) {
   .helpdesk-search-target-transcript {
     .helpdesk-table {
       .helpdesk-greater-than-sign-position {
+        position: relative;
         bottom: 25px;
       }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .helpdesk-search-target-transcript {
+    .helpdesk-panel {
+      text-align: center;
+      margin-top: 10px;
+
+      .eui-btn {
+        width: 100%;
+      }
+    }
+
+    .helpdesk-greater-than-sign-position-mobile {
+      text-align: center;
+      position: relative;
+      bottom: 10px;
     }
   }
 }

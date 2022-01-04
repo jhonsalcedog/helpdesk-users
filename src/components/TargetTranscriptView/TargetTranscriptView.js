@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Panel from 'emerald-ui/lib/Panel';
 import Container from 'emerald-ui/lib/Container';
@@ -13,19 +13,25 @@ import Popover from 'emerald-ui/lib/Popover';
 import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import './TargetTranscriptView.scss';
 
 const TargetTranscriptView = () => {
-  const [state, setState] = useState({ show: false });
+  let navigate = useNavigate();
+
+  const [isOpen, setIsOpen] = useState({ show: false });
 
   const openModal = () => {
-    setState({ show: true });
+    setIsOpen({ show: true });
   };
 
   const closeModal = () => {
-    setState({ show: false });
+    setIsOpen({ show: false });
+  };
+
+  const handleNavegateMain = () => {
+    navigate('/');
   };
 
   return (
@@ -45,7 +51,7 @@ const TargetTranscriptView = () => {
                   <option value="third">Selected Cycle 3</option>
                   <option value="fourth">Selected Cycle 4</option>
                 </SingleSelect>
-                <p>
+                <p className="helpdesk-transcript-space-p">
                   Compliance Status:
                   <span className="text-success helpdesk-transcript-span">
                     Complete
@@ -151,11 +157,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 1</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 1 overage</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -244,11 +247,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 2</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 2</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -337,11 +337,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 3</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 3</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -352,7 +349,7 @@ const TargetTranscriptView = () => {
                       <td>4</td>
                     </tr>
                     <tr>
-                      <td className="helpdesk-transcript-table-td-total">
+                      <td className="helpdesk-transcript-table-td-total text-bold">
                         total hours
                       </td>
                       <td className="text-bold">20</td>
@@ -371,7 +368,7 @@ const TargetTranscriptView = () => {
                   <option value="third">Selected Cycle 3</option>
                   <option value="fourth">Selected Cycle 4</option>
                 </SingleSelect>
-                <p>
+                <p className="helpdesk-transcript-space-p">
                   Compliance Status:{' '}
                   <span className="text-danger">Not Complete</span>
                 </p>
@@ -474,11 +471,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 1</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 1</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -567,11 +561,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 2</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 2</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -660,11 +651,8 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button
-                            shape="outline"
-                            className="helpdesk-transcript-popover-button"
-                          >
-                            <span>Course 3</span>
+                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                            <span className="text-info">Course 3 overage</span>
                           </Button>
                         </OverlayTrigger>
 
@@ -691,28 +679,37 @@ const TargetTranscriptView = () => {
             <Col className="helpdesk-transcript-table-bottom">
               <Link to="#">Did you know's</Link>
               <div className="helpdesk-transcript-buttons">
-                <Button>Test Reallocation</Button>
-                <Button onClick={openModal}>Apply Manipulation</Button>
-                <Modal onHide={closeModal} show={state.show}>
-                  <Modal.Header closeButton={true}>
-                    <Modal.Title>Edit profile</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <p>
-                      Please confirm you want to move these credits to the
-                      target cycle
-                    </p>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button onClick={closeModal} shape="flat" color="info">
-                      Ok
-                    </Button>
-                    <Button onClick={closeModal} color="info">
-                      cancel
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
+                <Button color="info" onClick={handleNavegateMain}>
+                  Back to manipulation
+                </Button>
+                <Button color="warning">Test Reallocation</Button>
+                <Button color="info" onClick={openModal}>
+                  Apply Manipulation
+                </Button>
               </div>
+              <Modal onHide={closeModal} show={isOpen.show}>
+                <Modal.Header closeButton={true}>
+                  <Modal.Title>Apply Manipulation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p>
+                    Please confirm you want to move these credits to the target
+                    cycle
+                  </p>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    onClick={handleNavegateMain}
+                    shape="flat"
+                    color="info"
+                  >
+                    OK
+                  </Button>
+                  <Button onClick={closeModal} color="info">
+                    CANCEL
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </Col>
           </Row>
         </Panel.Body>
@@ -721,6 +718,6 @@ const TargetTranscriptView = () => {
   );
 };
 
-TargetTranscriptView.propTypes = {};
+// TargetTranscriptView.propTypes = {};
 
 export default TargetTranscriptView;

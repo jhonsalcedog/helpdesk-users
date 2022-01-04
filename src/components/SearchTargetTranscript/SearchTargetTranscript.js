@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Panel from 'emerald-ui/lib/Panel';
-import Table from 'emerald-ui/lib/Table';
 import Container from 'emerald-ui/lib/Container';
 import Row from 'emerald-ui/lib/Row';
 import Col from 'emerald-ui/lib/Col';
+import Table from 'emerald-ui/lib/Table';
+import Card from 'emerald-ui/lib/Card';
 import SingleSelect from 'emerald-ui/lib/SingleSelect';
 import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
+import Icon from 'emerald-ui/lib/Icon';
 
 import './SearchTargetTranscript.scss';
 // import PropTypes from 'prop-types';
@@ -17,6 +19,23 @@ const SearchTargetTranscript = () => {
   let navigate = useNavigate();
 
   const [show, setShow] = useState(false);
+  const [resize, setResize] = useState(true);
+
+  useEffect(() => {
+    const displayWindowSize = () => {
+      if (window.innerWidth <= 767) {
+        setResize(false);
+      } else {
+        setResize(true);
+      }
+    };
+
+    window.addEventListener('resize', displayWindowSize);
+
+    return () => {
+      window.removeEventListener('resize', displayWindowSize);
+    };
+  }, []);
 
   const handleSearch = () => {
     setShow(!show);
@@ -65,66 +84,171 @@ const SearchTargetTranscript = () => {
       {show && (
         <>
           <Row>
-            <Col>
-              <div className="helpdesk-table">
-                <Table>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>License</th>
-                      <th>Profession</th>
-                      <th></th>
-                      <th></th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Jane Doe Doe</td>
-                      <td>RN9999999</td>
-                      <td>Registered Nurse</td>
-                      <td className="helpdesk-td-select">
-                        <SingleSelect ariaLabel="Select Cycle to move credits from">
-                          <option value="first">First</option>
-                          <option value="second">Second</option>
-                          <option value="third">Third</option>
-                          <option value="fourth">Fourth</option>
-                        </SingleSelect>
-                        <span className="helpdesk-label-select">
-                          Select Cycle to move credits from
-                        </span>
-                      </td>
-                      <td>
-                        <span className="helpdesk-greater-than-sign-position">
-                          &#62;
-                        </span>
-                      </td>
-                      <td className="helpdesk-td-select">
-                        <SingleSelect ariaLabel="Select Cycle to move credits to">
-                          <option value="first">First</option>
-                          <option value="second">Second</option>
-                          <option value="third">Third</option>
-                          <option value="fourth">Fourth</option>
-                        </SingleSelect>
-                        <span className="helpdesk-label-select">
-                          Select Cycle to move credits to
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </div>
+            <Col md={12} lg={12} xs={12}>
+              {resize ? (
+                <div className="helpdesk-table">
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>License</th>
+                        <th>Profession</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Jane Doe Doe</td>
+                        <td>RN9999999</td>
+                        <td>Registered Nurse</td>
+                        <td className="helpdesk-td-select">
+                          <SingleSelect ariaLabel="Select Cycle to move credits from">
+                            <option value="first">First</option>
+                            <option value="second">Second</option>
+                            <option value="third">Third</option>
+                            <option value="fourth">Fourth</option>
+                          </SingleSelect>
+                          <span className="helpdesk-label-select">
+                            Select Cycle to move credits from
+                          </span>
+                        </td>
+                        <td>
+                          <span className="helpdesk-greater-than-sign-position">
+                            <Icon
+                              name="chevron_right"
+                              style={{ fontSize: '24px' }}
+                              className="text-light"
+                            />
+                          </span>
+                        </td>
+                        <td className="helpdesk-td-select">
+                          <SingleSelect ariaLabel="Select Cycle to move credits to">
+                            <option value="first">First</option>
+                            <option value="second">Second</option>
+                            <option value="third">Third</option>
+                            <option value="fourth">Fourth</option>
+                          </SingleSelect>
+                          <span className="helpdesk-label-select">
+                            Select Cycle to move credits to
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Jane Doe Doe</td>
+                        <td>RN9999999</td>
+                        <td>Registered Nurse</td>
+                        <td className="helpdesk-td-select">
+                          <SingleSelect ariaLabel="Select Cycle to move credits from">
+                            <option value="first">First</option>
+                            <option value="second">Second</option>
+                            <option value="third">Third</option>
+                            <option value="fourth">Fourth</option>
+                          </SingleSelect>
+                          <span className="helpdesk-label-select">
+                            Select Cycle to move credits from
+                          </span>
+                        </td>
+                        <td>
+                          <span className="helpdesk-greater-than-sign-position">
+                            <Icon
+                              name="chevron_right"
+                              style={{ fontSize: '24px' }}
+                              className="text-light"
+                            />
+                          </span>
+                        </td>
+                        <td className="helpdesk-td-select">
+                          <SingleSelect ariaLabel="Select Cycle to move credits to">
+                            <option value="first">First</option>
+                            <option value="second">Second</option>
+                            <option value="third">Third</option>
+                            <option value="fourth">Fourth</option>
+                          </SingleSelect>
+                          <span className="helpdesk-label-select">
+                            Select Cycle to move credits to
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
+              ) : (
+                <>
+                  <Card className="helpdesk-target-card">
+                    <h1 className="eui-card-title">Jane Doe Doe</h1>
+                    <h2 className="eui-card-subtitle">RN9999999</h2>
+                    <h2 className="eui-card-subtitle">Registered Nurse</h2>
+                    <div className="helpdesk-target-select">
+                      <SingleSelect
+                        ariaLabel="Select Cycle to move credits from"
+                        label="Select Cycle to move credits from"
+                      >
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                        <option value="fourth">Fourth</option>
+                      </SingleSelect>
+                      <span className="helpdesk-greater-than-sign-position-mobile">
+                        <Icon
+                          name="expand_more"
+                          style={{ fontSize: '24px' }}
+                          className="text-light"
+                        />
+                      </span>
+                      <SingleSelect
+                        ariaLabel="Select Cycle to move credits to"
+                        label="Select Cycle to move credits to"
+                      >
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                        <option value="fourth">Fourth</option>
+                      </SingleSelect>
+                    </div>
+                  </Card>
+                  <Card className="helpdesk-target-card">
+                    <h1 className="eui-card-title">Jane Doe Doe</h1>
+                    <h2 className="eui-card-subtitle">RN9999999</h2>
+                    <h2 className="eui-card-subtitle">Registered Nurse</h2>
+                    <div className="helpdesk-target-select">
+                      <SingleSelect
+                        ariaLabel="Select Cycle to move credits from"
+                        label="Select Cycle to move credits from"
+                      >
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                        <option value="fourth">Fourth</option>
+                      </SingleSelect>
+                      <span className="helpdesk-greater-than-sign-position-mobile">
+                        <Icon
+                          name="expand_more"
+                          style={{ fontSize: '24px' }}
+                          className="text-light"
+                        />
+                      </span>
+                      <SingleSelect
+                        ariaLabel="Select Cycle to move credits to"
+                        label="Select Cycle to move credits to"
+                      >
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                        <option value="third">Third</option>
+                        <option value="fourth">Fourth</option>
+                      </SingleSelect>
+                    </div>
+                  </Card>
+                </>
+              )}
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={12} lg={12} xs={12}>
               <Panel className="helpdesk-panel">
                 <Panel.Body>
-                  <Button
-                    color="brand"
-                    shape="outline"
-                    onClick={handleNavegate}
-                  >
+                  <Button color="info" shape="outline" onClick={handleNavegate}>
                     Manipulate
                   </Button>
                 </Panel.Body>
