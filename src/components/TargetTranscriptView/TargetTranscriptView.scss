@@ -169,9 +169,29 @@
   }
 }
 
+@media (max-width: 991px) {
+  .helpdesk-transcript-view .helpdesk-transcript-table-bottom {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+  }
+  .helpdesk-transcript-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    width: 100%;
+
+    .eui-btn {
+      width: 100%;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .helpdesk-transcript-table-bottom {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     gap: 20px;
   }
@@ -203,20 +223,6 @@
       .popover-textfield {
         width: 55px;
       }
-    }
-  }
-}
-
-@media (max-width: 423px) {
-  .helpdesk-transcript-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 15px;
-    width: 100%;
-
-    .eui-btn {
-      width: 100%;
     }
   }
 }

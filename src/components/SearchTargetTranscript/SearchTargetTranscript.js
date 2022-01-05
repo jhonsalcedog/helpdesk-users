@@ -25,7 +25,8 @@ const SearchTargetTranscript = () => {
     const displayWindowSize = () => {
       if (window.innerWidth <= 767) {
         setResize(false);
-      } else {
+      }
+      if (window.innerWidth > 767) {
         setResize(true);
       }
     };
@@ -54,26 +55,26 @@ const SearchTargetTranscript = () => {
               <h1 className="helpdesk-title">Transcript Manipulation</h1>
 
               <form className="helpdesk-form">
-                <SingleSelect label="Select State" id="s1">
+                <SingleSelect label="State" id="s1">
                   <option value="first">First</option>
                   <option value="second">Second</option>
                   <option value="third">Third</option>
                   <option value="fourth">Fourth</option>
                 </SingleSelect>
-                <SingleSelect label="Select Board" id="s2">
+                <SingleSelect label="Board" id="s2">
                   <option value="first">First</option>
                   <option value="second">Second</option>
                   <option value="third">Third</option>
                   <option value="fourth">Fourth</option>
                 </SingleSelect>
-                <SingleSelect label="Select Profession" id="s2">
+                <SingleSelect label="Profession" id="s2">
                   <option value="first">First</option>
                   <option value="second">Second</option>
                   <option value="third">Third</option>
                   <option value="fourth">Fourth</option>
                 </SingleSelect>
                 <TextField label="License Number" />
-                <Button color="brand" shape="outline" onClick={handleSearch}>
+                <Button color="info" onClick={handleSearch}>
                   Search
                 </Button>
               </form>
@@ -84,9 +85,9 @@ const SearchTargetTranscript = () => {
       {show && (
         <>
           <Row>
-            <Col md={12} lg={12} xs={12}>
+            <Col>
               {resize ? (
-                <div className="helpdesk-table">
+                <div className="helpdesk-table eui-table-responsive">
                   <Table>
                     <thead>
                       <tr>
@@ -111,7 +112,7 @@ const SearchTargetTranscript = () => {
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
                           <span className="helpdesk-label-select">
-                            Select Cycle to move credits from
+                            Cycle to move credits from
                           </span>
                         </td>
                         <td>
@@ -131,7 +132,7 @@ const SearchTargetTranscript = () => {
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
                           <span className="helpdesk-label-select">
-                            Select Cycle to move credits to
+                            Cycle to move credits to
                           </span>
                         </td>
                       </tr>
@@ -140,14 +141,14 @@ const SearchTargetTranscript = () => {
                         <td>RN9999999</td>
                         <td>Registered Nurse</td>
                         <td className="helpdesk-td-select">
-                          <SingleSelect ariaLabel="Select Cycle to move credits from">
+                          <SingleSelect ariaLabel="Cycle to move credits from">
                             <option value="first">First</option>
                             <option value="second">Second</option>
                             <option value="third">Third</option>
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
                           <span className="helpdesk-label-select">
-                            Select Cycle to move credits from
+                            Cycle to move credits from
                           </span>
                         </td>
                         <td>
@@ -160,14 +161,14 @@ const SearchTargetTranscript = () => {
                           </span>
                         </td>
                         <td className="helpdesk-td-select">
-                          <SingleSelect ariaLabel="Select Cycle to move credits to">
+                          <SingleSelect ariaLabel="Cycle to move credits to">
                             <option value="first">First</option>
                             <option value="second">Second</option>
                             <option value="third">Third</option>
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
                           <span className="helpdesk-label-select">
-                            Select Cycle to move credits to
+                            Cycle to move credits to
                           </span>
                         </td>
                       </tr>
@@ -198,7 +199,7 @@ const SearchTargetTranscript = () => {
                         />
                       </span>
                       <SingleSelect
-                        ariaLabel="Select Cycle to move credits to"
+                        ariaLabel="Cycle to move credits to"
                         label="Select Cycle to move credits to"
                       >
                         <option value="first">First</option>
@@ -215,7 +216,7 @@ const SearchTargetTranscript = () => {
                     <div className="helpdesk-target-select">
                       <SingleSelect
                         ariaLabel="Select Cycle to move credits from"
-                        label="Select Cycle to move credits from"
+                        label="Cycle to move credits from"
                       >
                         <option value="first">First</option>
                         <option value="second">Second</option>
@@ -248,7 +249,7 @@ const SearchTargetTranscript = () => {
             <Col md={12} lg={12} xs={12}>
               <Panel className="helpdesk-panel">
                 <Panel.Body>
-                  <Button color="info" shape="outline" onClick={handleNavegate}>
+                  <Button color="info" onClick={handleNavegate}>
                     Manipulate
                   </Button>
                 </Panel.Body>

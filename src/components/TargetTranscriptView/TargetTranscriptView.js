@@ -21,6 +21,7 @@ const TargetTranscriptView = () => {
   let navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState({ show: false });
+  const [popover, setPopover] = useState({ show: false });
 
   const openModal = () => {
     setIsOpen({ show: true });
@@ -34,6 +35,18 @@ const TargetTranscriptView = () => {
     navigate('/');
   };
 
+  const openPopover = () => {
+    setPopover({ show: true });
+  };
+
+  const closePopover = () => {
+    setPopover({ show: false });
+  };
+
+  const handleToggle = toggled => {
+    setPopover({ show: toggled });
+  };
+
   return (
     <Container className="helpdesk-transcript-view">
       <Panel>
@@ -45,7 +58,7 @@ const TargetTranscriptView = () => {
           <Row>
             <Col md={6} lg={6} xs={12}>
               <div className="text-center helpdesk-transcript-selec">
-                <SingleSelect label="Moving credits from" id="s1">
+                <SingleSelect label="Move credits from" id="s1">
                   <option value="first">Selected Cycle 1</option>
                   <option value="second">Selected Cycle 2</option>
                   <option value="third">Selected Cycle 3</option>
@@ -81,6 +94,8 @@ const TargetTranscriptView = () => {
                     <tr>
                       <td className="helpdesk-transcript-table-td">
                         <OverlayTrigger
+                          show={popover.show}
+                          onToggle={handleToggle}
                           style={{ margin: '3px' }}
                           placement="bottom"
                           overlay={
@@ -149,7 +164,9 @@ const TargetTranscriptView = () => {
                                       </tbody>
                                     </Table>
                                     <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
+                                      <Button onClick={closePopover}>
+                                        Save and Apply
+                                      </Button>
                                     </div>
                                   </div>
                                 </Col>
@@ -157,7 +174,10 @@ const TargetTranscriptView = () => {
                             </Popover>
                           }
                         >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
+                          <Button
+                            onClick={openPopover}
+                            className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button"
+                          >
                             <span className="text-info">Course 1 overage</span>
                           </Button>
                         </OverlayTrigger>
@@ -362,7 +382,7 @@ const TargetTranscriptView = () => {
             </Col>
             <Col md={6} lg={6}>
               <div className="text-center">
-                <SingleSelect label="Moving credits to" id="s2">
+                <SingleSelect label="Move credits to" id="s2">
                   <option value="first">Selected Cycle 1</option>
                   <option value="second">Selected Cycle 2</option>
                   <option value="third">Selected Cycle 3</option>
@@ -676,19 +696,21 @@ const TargetTranscriptView = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="helpdesk-transcript-table-bottom">
+            <Col md={12} lg={12} className="helpdesk-transcript-table-bottom">
               <Link to="#">Did you know's</Link>
               <div className="helpdesk-transcript-buttons">
+                <Button color="info" onClick={openModal}>
+                  Apply Manipulation
+                </Button>
+
+                <Button>Test Reallocation</Button>
+
                 <Button
                   shape="outline"
                   color="info"
                   onClick={handleNavegateMain}
                 >
                   Back to manipulation
-                </Button>
-                <Button>Test Reallocation</Button>
-                <Button color="info" onClick={openModal}>
-                  Apply Manipulation
                 </Button>
               </div>
               <Modal onHide={closeModal} show={isOpen.show}>
@@ -702,15 +724,11 @@ const TargetTranscriptView = () => {
                   </p>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button
-                    onClick={handleNavegateMain}
-                    shape="flat"
-                    color="info"
-                  >
-                    OK
+                  <Button onClick={handleNavegateMain} color="info">
+                    Apply manipulation
                   </Button>
-                  <Button onClick={closeModal} color="info">
-                    CANCEL
+                  <Button onClick={closeModal} shape="flat" color="info">
+                    Don’t apply manipulation
                   </Button>
                 </Modal.Footer>
               </Modal>
