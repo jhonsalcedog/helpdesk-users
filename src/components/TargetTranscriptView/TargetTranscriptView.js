@@ -20,8 +20,317 @@ import './TargetTranscriptView.scss';
 const TargetTranscriptView = () => {
   let navigate = useNavigate();
 
+  const data = [
+    {
+      id: '1',
+      name: 'Subject Area 1',
+      required: '2',
+      apply: '4',
+      posted: '7',
+      courses: [
+        {
+          id: '11',
+          name: 'Course 1 overage',
+          date: '10/10/1234',
+          required: '',
+          apply: '1',
+          posted: '2',
+          subjects: [
+            {
+              id: '111',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '112',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '113',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        },
+        {
+          id: '12',
+          name: 'Course 2',
+          required: '',
+          apply: '4',
+          posted: '7',
+          subjects: [
+            {
+              id: '121',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '122',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '123',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            },
+            {
+              id: '124',
+              name: 'Subject Area 4',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '125',
+              name: 'Subject Area 5',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '126',
+              name: 'Subject Area 6',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            },
+            {
+              id: '127',
+              name: 'Subject Area 7',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: '2',
+      name: 'Subject Area 2',
+      required: '2',
+      apply: '4',
+      posted: '7',
+      courses: [
+        {
+          id: '21',
+          name: 'Course 1',
+          date: '10/10/1234',
+          required: '',
+          apply: '1',
+          posted: '2',
+          subjects: [
+            {
+              id: '211',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '212',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '213',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        },
+        {
+          id: '22',
+          name: 'Course 2',
+          required: '',
+          apply: '4',
+          posted: '7',
+          subjects: [
+            {
+              id: '221',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '222',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '223',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        }
+      ]
+    }
+  ];
+  const database = [
+    {
+      id: '01',
+      name: 'Subject Area 1',
+      required: '2',
+      apply: '4',
+      posted: '7',
+      courses: [
+        {
+          id: '011',
+          name: 'Course 1 overage',
+          date: '10/10/1234',
+          required: '',
+          apply: '1',
+          posted: '2',
+          subjects: [
+            {
+              id: '0111',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0112',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0113',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        },
+        {
+          id: '012',
+          name: 'Course 2',
+          required: '',
+          apply: '4',
+          posted: '7',
+          subjects: [
+            {
+              id: '0121',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0122',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0123',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0124',
+              name: 'Subject Area 4',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0125',
+              name: 'Subject Area 5',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0126',
+              name: 'Subject Area 6',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0127',
+              name: 'Subject Area 7',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id: '02',
+      name: 'Subject Area 2',
+      required: '2',
+      apply: '4',
+      posted: '7',
+      courses: [
+        {
+          id: '021',
+          name: 'Course 1',
+          date: '10/10/1234',
+          required: '',
+          apply: '1',
+          posted: '2',
+          subjects: [
+            {
+              id: '0211',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0212',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0213',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        },
+        {
+          id: '022',
+          name: 'Course 2',
+          required: '',
+          apply: '4',
+          posted: '7',
+          subjects: [
+            {
+              id: '0221',
+              name: 'Subject Area 1',
+              availableToMove: 2,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0222',
+              name: 'Subject Area 2',
+              availableToMove: 3,
+              moveToTargetCycle: null
+            },
+            {
+              id: '0223',
+              name: 'Subject Area 3',
+              availableToMove: 4,
+              moveToTargetCycle: null
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
   const [isOpen, setIsOpen] = useState({ show: false });
-  const [popover, setPopover] = useState({ show: false });
+  const [showCoursesOverlay, setShowCoursesOverlay] = useState({});
 
   const openModal = () => {
     setIsOpen({ show: true });
@@ -35,17 +344,224 @@ const TargetTranscriptView = () => {
     navigate('/');
   };
 
-  const openPopover = () => {
-    setPopover({ show: true });
+  const openPopover = id => {
+    setShowCoursesOverlay({ [id]: true });
   };
 
-  const closePopover = () => {
-    setPopover({ show: false });
+  const closePopover = id => {
+    setShowCoursesOverlay({ ...showCoursesOverlay, [id]: false });
   };
 
-  const handleToggle = toggled => {
-    setPopover({ show: toggled });
+  const handleToggle = (id, show) => {
+    setShowCoursesOverlay({ [id]: show });
   };
+
+  //body Table
+  const firstBodyTable = data.map(item => {
+    return (
+      <>
+        <tr key={item.id}>
+          <td className="text-bold helpdesk-transcript-td-subject">
+            {item.name}
+          </td>
+          <td className="text-bold">{item.required}</td>
+          <td className="text-bold">{item.apply}</td>
+          <td className="text-bold">{item.posted}</td>
+        </tr>
+        {item.courses.map(course => {
+          return (
+            <tr key={`course-${course.id}`}>
+              <td className="helpdesk-transcript-table-td">
+                <OverlayTrigger
+                  show={showCoursesOverlay[course.id] || false}
+                  onToggle={show => handleToggle(course.id, show)}
+                  style={{ margin: '3px' }}
+                  placement="bottom"
+                  overlay={
+                    <Popover className="helpdesk-transcript-popover">
+                      <Row>
+                        <Col>
+                          <div className="helpdesk-popover-table-wapper">
+                            <Table className="helpdesk-popover-table">
+                              <thead>
+                                <tr>
+                                  <th> </th>
+                                  <th className="popover-table-th">
+                                    Available to move
+                                  </th>
+                                  <th className="popover-table-th">
+                                    Move to Target Cycle
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {course.subjects.map(subject => {
+                                  return (
+                                    <tr key={`subject-${subject.id}`}>
+                                      <td className="popover-table-td">
+                                        {subject.name}
+                                      </td>
+                                      <td className="popover-table-td text-center">
+                                        {subject.availableToMove}
+                                      </td>
+                                      <td className="popover-table-td">
+                                        <TextField
+                                          className="popover-textfield"
+                                          ariaLabel="intro your number"
+                                          placeholder="0"
+                                        />
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </Table>
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <div className="popover-table-button">
+                            <Button
+                              color="info"
+                              onClick={() => closePopover(course.id)}
+                            >
+                              Save and Apply
+                            </Button>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Popover>
+                  }
+                >
+                  <Button
+                    onClick={() => openPopover(course.id)}
+                    className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button"
+                  >
+                    <span className="text-info">{course.name}</span>
+                  </Button>
+                </OverlayTrigger>
+
+                <span>{course.date}</span>
+              </td>
+              <td></td>
+              <td>{course.apply}</td>
+              <td>{course.posted}</td>
+            </tr>
+          );
+        })}
+      </>
+    );
+  });
+
+  const secondBodyTable = database.map(item => {
+    return (
+      <>
+        <tr key={item.id}>
+          <td className="text-bold helpdesk-transcript-td-subject">
+            {item.name}
+          </td>
+          <td className="text-bold">{item.required}</td>
+          <td className="text-bold">{item.apply}</td>
+          <td className="text-bold">{item.posted}</td>
+        </tr>
+        {item.courses.map(course => {
+          return (
+            <tr key={`course-${course.id}`}>
+              <td className="helpdesk-transcript-table-td">
+                <OverlayTrigger
+                  show={showCoursesOverlay[course.id] || false}
+                  onToggle={show => handleToggle(course.id, show)}
+                  style={{ margin: '3px' }}
+                  placement="bottom"
+                  overlay={
+                    <Popover className="helpdesk-transcript-popover">
+                      <Row>
+                        <Col>
+                          <div className="helpdesk-popover-table-wapper">
+                            <Table className="helpdesk-popover-table">
+                              <thead>
+                                <tr>
+                                  <th> </th>
+                                  <th className="popover-table-th">
+                                    Available to move
+                                  </th>
+                                  <th className="popover-table-th">
+                                    Move to Target Cycle
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {course.subjects.map(subject => {
+                                  return (
+                                    <tr key={`subject-${subject.id}`}>
+                                      <td className="popover-table-td">
+                                        {subject.name}
+                                      </td>
+                                      <td className="popover-table-td text-center">
+                                        {subject.availableToMove}
+                                      </td>
+                                      <td className="popover-table-td">
+                                        <TextField
+                                          className="popover-textfield"
+                                          ariaLabel="intro your number"
+                                          placeholder="0"
+                                        />
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </Table>
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <div className="popover-table-button">
+                            <Button
+                              color="info"
+                              onClick={() => closePopover(course.id)}
+                            >
+                              Save and Apply
+                            </Button>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Popover>
+                  }
+                >
+                  <Button
+                    onClick={() => openPopover(course.id)}
+                    className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button"
+                  >
+                    <span className="text-info">{course.name}</span>
+                  </Button>
+                </OverlayTrigger>
+
+                <span>{course.date}</span>
+              </td>
+              <td></td>
+              <td>{course.apply}</td>
+              <td>{course.posted}</td>
+            </tr>
+          );
+        })}
+      </>
+    );
+  });
+
+  //totalHours
+  const totalHours = (
+    <tr>
+      <td className="helpdesk-transcript-table-td-total text-bold">
+        total hours
+      </td>
+      <td className="text-bold">20</td>
+      <td className="text-bold">20</td>
+      <td className="text-bold">20</td>
+    </tr>
+  );
 
   return (
     <Container className="helpdesk-transcript-view">
@@ -83,299 +599,8 @@ const TargetTranscriptView = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="text-bold helpdesk-transcript-td-subject">
-                        Subject Area 1
-                      </td>
-                      <td className="text-bold">8</td>
-                      <td className="text-bold">12</td>
-                      <td className="text-bold">12</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          show={popover.show}
-                          onToggle={handleToggle}
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button onClick={closePopover}>
-                                        Save and Apply
-                                      </Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button
-                            onClick={openPopover}
-                            className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button"
-                          >
-                            <span className="text-info">Course 1 overage</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
-                            <span className="text-info">Course 2</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
-                            <span className="text-info">Course 3</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td-total text-bold">
-                        total hours
-                      </td>
-                      <td className="text-bold">20</td>
-                      <td className="text-bold">20</td>
-                      <td className="text-bold">20</td>
-                    </tr>
+                    {firstBodyTable}
+                    {totalHours}
                   </tbody>
                 </Table>
               </div>
@@ -397,299 +622,15 @@ const TargetTranscriptView = () => {
                 <Table className="helpdesk-transcript-table">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th> </th>
                       <th>Required</th>
                       <th>Applied</th>
                       <th>Posted</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="text-bold helpdesk-transcript-td-subject">
-                        Subject Area 1
-                      </td>
-                      <td className="text-bold">8</td>
-                      <td className="text-bold">12</td>
-                      <td className="text-bold">12</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
-                            <span className="text-info">Course 1</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
-                            <span className="text-info">Course 2</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td">
-                        <OverlayTrigger
-                          style={{ margin: '3px' }}
-                          placement="bottom"
-                          overlay={
-                            <Popover className="helpdesk-transcript-popover">
-                              <Row>
-                                <Col>
-                                  <div style={{ overflow: 'auto' }}>
-                                    <Table className="helpdesk-popover-table">
-                                      <thead>
-                                        <tr>
-                                          <th> </th>
-                                          <th className="popover-table-th">
-                                            Available to move
-                                          </th>
-                                          <th className="popover-table-th">
-                                            Move to Target Cycle
-                                          </th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 1
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 2
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                          <td className="popover-table-td">
-                                            Subject Area 3
-                                          </td>
-                                          <td className="popover-table-td text-center">
-                                            2
-                                          </td>
-                                          <td className="popover-table-td">
-                                            <TextField
-                                              className="popover-textfield"
-                                              ariaLabel="intro your number"
-                                              placeholder="0"
-                                            />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </Table>
-                                    <div className="popover-table-button">
-                                      <Button>Save and Apply</Button>
-                                    </div>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Popover>
-                          }
-                        >
-                          <Button className="helpdesk-transcript-popover-button-mobile helpdesk-transcript-popover-button">
-                            <span className="text-info">Course 3 overage</span>
-                          </Button>
-                        </OverlayTrigger>
-
-                        <span>01/01/2020</span>
-                      </td>
-                      <td></td>
-                      <td>4</td>
-                      <td>4</td>
-                    </tr>
-                    <tr>
-                      <td className="helpdesk-transcript-table-td-total">
-                        total hours
-                      </td>
-                      <td className="text-bold">20</td>
-                      <td className="text-bold">20</td>
-                      <td className="text-bold">20</td>
-                    </tr>
+                    {secondBodyTable}
+                    {totalHours}
                   </tbody>
                 </Table>
               </div>

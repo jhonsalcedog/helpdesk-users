@@ -79,6 +79,7 @@
   }
 
   //popover
+
   .helpdesk-transcript-popover {
     display: flex;
     justify-content: space-around;
@@ -132,7 +133,7 @@
     }
   }
   .popover-table-button {
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: right;
   }
 }
@@ -148,6 +149,11 @@
   .eui-btn-styles {
   text-decoration: underline;
   text-decoration-color: #0073e9;
+}
+
+.helpdesk-popover-table-wapper {
+  overflow: scroll;
+  height: 260px;
 }
 
 @media (max-width: 1199px) {
