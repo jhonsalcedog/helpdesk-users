@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Panel from 'emerald-ui/lib/Panel';
@@ -12,48 +12,29 @@ import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 import Icon from 'emerald-ui/lib/Icon';
 
+import { SearchTargetContext } from '../../context/SearchTargetContext';
+
 import './SearchTargetTranscript.scss';
-// import PropTypes from 'prop-types';
 
 const SearchTargetTranscript = () => {
+  const { usersSelect, setUserView, query, setQuery } =
+    useContext(SearchTargetContext);
+
   let navigate = useNavigate();
 
-  const dataSearch = [
-    {
-      id: '1',
-      name: 'Jane Doe Doe',
-      license: 'RN9999999',
-      profession: 'Registered Nurse',
-      cycleSelect: null
-    },
-    {
-      id: '2',
-      name: 'John foo foo',
-      license: 'RN66666666',
-      profession: 'Registered Nurse',
-      cycleSelect: null
-    },
-    {
-      id: '3',
-      name: 'jhonatan For For',
-      license: 'RN88888888',
-      profession: 'Registered Nurse',
-      cycleSelect: null
-    }
-  ];
+  const [resize, setResize] = useState(null);
 
-  const [show, setShow] = useState(false);
-  const [resize, setResize] = useState(true);
+  const displayWindowSize = () => {
+    if (window.innerWidth > 992) {
+      setResize(true);
+    }
+    if (window.innerWidth <= 991) {
+      setResize(false);
+    }
+  };
 
   useEffect(() => {
-    const displayWindowSize = () => {
-      if (window.innerWidth <= 767) {
-        setResize(false);
-      }
-      if (window.innerWidth > 767) {
-        setResize(true);
-      }
-    };
+    displayWindowSize();
 
     window.addEventListener('resize', displayWindowSize);
 
@@ -63,53 +44,8 @@ const SearchTargetTranscript = () => {
   }, []);
 
   const handleSearch = () => {
-    setShow(!show);
+    setQuery(true);
   };
-
-  const handleNavegate = () => {
-    navigate('/transcriptview');
-  };
-
-  const body = dataSearch.map(user => {
-    return (
-      <tr key={user.id}>
-        <td>{user.name}</td>
-        <td>{user.license}</td>
-        <td>{user.profession}</td>
-        <td className="helpdesk-td-select">
-          <SingleSelect ariaLabel="Select Cycle to move credits from">
-            <option value="first">First</option>
-            <option value="second">Second</option>
-            <option value="third">Third</option>
-            <option value="fourth">Fourth</option>
-          </SingleSelect>
-          <span className="helpdesk-label-select">
-            Cycle to move credits from
-          </span>
-        </td>
-        <td>
-          <span className="helpdesk-greater-than-sign-position">
-            <Icon
-              name="arrow_forward"
-              style={{ fontSize: '24px' }}
-              className="text-light"
-            />
-          </span>
-        </td>
-        <td className="helpdesk-td-select">
-          <SingleSelect ariaLabel="Select Cycle to move credits to">
-            <option value="first">First</option>
-            <option value="second">Second</option>
-            <option value="third">Third</option>
-            <option value="fourth">Fourth</option>
-          </SingleSelect>
-          <span className="helpdesk-label-select">
-            Cycle to move credits to
-          </span>
-        </td>
-      </tr>
-    );
-  });
 
   return (
     <Container className="helpdesk-search-target-transcript">
@@ -147,10 +83,10 @@ const SearchTargetTranscript = () => {
           </Panel>
         </Col>
       </Row>
-      {show && (
+      {query && (
         <>
           <Row>
-            <Col>
+            <Col xs={12} md={12} lg={12}>
               {resize ? (
                 <div className="helpdesk-table">
                   <Table>
@@ -164,17 +100,77 @@ const SearchTargetTranscript = () => {
                         <th></th>
                       </tr>
                     </thead>
-                    <tbody>{body}</tbody>
+                    <tbody>
+                      {usersSelect.map(user => {
+                        return (
+                          <tr key={user.id}>
+                            <td>
+                              <span className="helpdeks-td">{user.name}</span>
+                            </td>
+                            <td>
+                              <span className="helpdeks-td">
+                                {user.pantone_value}
+                              </span>
+                            </td>
+                            <td>
+                              <span className="helpdeks-td">{user.name}</span>{' '}
+                            </td>
+                            <td className="helpdesk-td-select">
+                              <SingleSelect ariaLabel="Select Cycle to move credits from">
+                                <option value="first">First</option>
+                                <option value="second">Second</option>
+                                <option value="third">Third</option>
+                                <option value="fourth">Fourth</option>
+                              </SingleSelect>
+                              <span className="helpdesk-label-select">
+                                Cycle to move credits from
+                              </span>
+                            </td>
+                            <td>
+                              <span className="helpdesk-greater-than-sign-position">
+                                <Icon
+                                  name="arrow_forward"
+                                  style={{ fontSize: '24px' }}
+                                  className="text-light"
+                                />
+                              </span>
+                            </td>
+                            <td className="helpdesk-td-select td-select-wrapper">
+                              <SingleSelect ariaLabel="Select Cycle to move credits to">
+                                <option value="first">First</option>
+                                <option value="second">Second</option>
+                                <option value="third">Third</option>
+                                <option value="fourth">Fourth</option>
+                              </SingleSelect>
+                              <span className="helpdesk-label-select label-select-space">
+                                Cycle to move credits to
+                              </span>
+                              <Button
+                                color="info"
+                                onClick={() => {
+                                  setUserView(user);
+                                  navigate('/transcriptview');
+                                }}
+                              >
+                                Manipulate
+                              </Button>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </Table>
                 </div>
               ) : (
                 <>
-                  {dataSearch.map(user => {
+                  {usersSelect.map(user => {
                     return (
                       <Card className="helpdesk-target-card" key={user.id}>
                         <h1 className="eui-card-title">{user.name}</h1>
-                        <h2 className="eui-card-subtitle">{user.license}</h2>
-                        <h2 className="eui-card-subtitle">{user.profession}</h2>
+                        <h2 className="eui-card-subtitle">
+                          {user.pantone_value}
+                        </h2>
+                        <h2 className="eui-card-subtitle">{user.name}</h2>
                         <div className="helpdesk-target-select">
                           <SingleSelect
                             ariaLabel="Select Cycle to move credits from"
@@ -185,7 +181,7 @@ const SearchTargetTranscript = () => {
                             <option value="third">Third</option>
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
-                          <span className="helpdesk-greater-than-sign-position-mobile">
+                          <span className="helpdesk-greater-than-sign-position-mobile text-center">
                             <Icon
                               name="arrow_downward"
                               style={{ fontSize: '24px' }}
@@ -202,6 +198,15 @@ const SearchTargetTranscript = () => {
                             <option value="fourth">Fourth</option>
                           </SingleSelect>
                         </div>
+                        <Button
+                          color="info"
+                          onClick={() => {
+                            setUserView(user);
+                            navigate('/transcriptview');
+                          }}
+                        >
+                          Manipulate
+                        </Button>
                       </Card>
                     );
                   })}
@@ -209,23 +214,10 @@ const SearchTargetTranscript = () => {
               )}
             </Col>
           </Row>
-          <Row>
-            <Col md={12} lg={12} xs={12}>
-              <Panel className="helpdesk-panel">
-                <Panel.Body>
-                  <Button color="info" onClick={handleNavegate}>
-                    Manipulate
-                  </Button>
-                </Panel.Body>
-              </Panel>
-            </Col>
-          </Row>
         </>
       )}
     </Container>
   );
 };
-
-// SearchTargetTranscript.propTypes = {};
 
 export default SearchTargetTranscript;

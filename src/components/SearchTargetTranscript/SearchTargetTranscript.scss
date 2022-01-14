@@ -14,6 +14,7 @@
   }
 
   .helpdesk-table {
+    margin-bottom: 40px;
     .helpdesk-td-select {
       display: flex;
       flex-direction: column;
@@ -22,13 +23,23 @@
       }
     }
 
+    .helpdeks-td {
+      text-transform: capitalize;
+      position: relative;
+      bottom: 35px;
+    }
+
     .helpdesk-label-select {
       font-size: 10px;
+
+      &.label-select-space {
+        margin-bottom: 10px;
+      }
     }
 
     .helpdesk-greater-than-sign-position {
       position: relative;
-      bottom: 8px;
+      bottom: 35px;
     }
   }
 
@@ -38,7 +49,6 @@
 
   .helpdesk-target-card {
     width: 100%;
-    max-width: 500px;
     margin-bottom: 20px;
   }
 
@@ -49,18 +59,18 @@
   }
 }
 
-@media (max-width: 991px) {
-  .helpdesk-search-target-transcript {
-    .helpdesk-table {
-      .helpdesk-greater-than-sign-position {
-        position: relative;
-        bottom: 17px;
-      }
-    }
-  }
-}
+// @media (max-width: 991px) {
+//   .helpdesk-search-target-transcript {
+//     .helpdesk-table {
+//       .helpdesk-greater-than-sign-position {
+//         position: relative;
+//         bottom: 25px;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .helpdesk-search-target-transcript {
     .helpdesk-panel {
       text-align: center;

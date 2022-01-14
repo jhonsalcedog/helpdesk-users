@@ -1,0 +1,23 @@
+[
+    {
+       "id":"1",
+       "name":"Jane Doe Doe",
+       "license":"RN9999999",
+       "profession":"Registered Nurse",
+       "cycleSelect":null
+    },
+    {
+       "id":"2",
+       "name":"John foo foo",
+       "license":"RN66666666",
+       "profession":"Registered Nurse",
+       "cycleSelect":null
+    },
+    {
+       "id":"3",
+       "name":"jhonatan For For",
+       "license":"RN88888888",
+       "profession":"Registered Nurse",
+       "cycleSelect":null
+    }
+ ]
