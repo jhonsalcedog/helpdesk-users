@@ -26,15 +26,16 @@
     .helpdeks-td {
       text-transform: capitalize;
       position: relative;
-      bottom: 35px;
+      bottom: 10px;
+    }
+
+    .helpdeks-button-icon {
+      position: relative;
+      bottom: 10px;
     }
 
     .helpdesk-label-select {
       font-size: 10px;
-
-      &.label-select-space {
-        margin-bottom: 10px;
-      }
     }
 
     .helpdesk-greater-than-sign-position {

@@ -11,6 +11,7 @@ import SingleSelect from 'emerald-ui/lib/SingleSelect';
 import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 import Icon from 'emerald-ui/lib/Icon';
+import IconButton from 'emerald-ui/lib/IconButton';
 
 import { SearchTargetContext } from '../../context/SearchTargetContext';
 
@@ -98,6 +99,7 @@ const SearchTargetTranscript = () => {
                         <th></th>
                         <th></th>
                         <th></th>
+                        <th className="not-padding">Manipulate</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -126,14 +128,8 @@ const SearchTargetTranscript = () => {
                                 Cycle to move credits from
                               </span>
                             </td>
-                            <td>
-                              <span className="helpdesk-greater-than-sign-position">
-                                <Icon
-                                  name="arrow_forward"
-                                  style={{ fontSize: '24px' }}
-                                  className="text-light"
-                                />
-                              </span>
+                            <td className="text-center">
+                              <span className="helpdeks-td">To</span>
                             </td>
                             <td className="helpdesk-td-select td-select-wrapper">
                               <SingleSelect ariaLabel="Select Cycle to move credits to">
@@ -142,10 +138,10 @@ const SearchTargetTranscript = () => {
                                 <option value="third">Third</option>
                                 <option value="fourth">Fourth</option>
                               </SingleSelect>
-                              <span className="helpdesk-label-select label-select-space">
+                              <span className="helpdesk-label-select">
                                 Cycle to move credits to
                               </span>
-                              <Button
+                              {/* <Button
                                 color="info"
                                 onClick={() => {
                                   setUserView(user);
@@ -153,7 +149,20 @@ const SearchTargetTranscript = () => {
                                 }}
                               >
                                 Manipulate
-                              </Button>
+                              </Button> */}
+                            </td>
+                            <td>
+                              <span className="helpdeks-button-icon">
+                                <IconButton
+                                  ariaLabel="Manipulate"
+                                  icon="edit_note"
+                                  title="Manipulate"
+                                  onClick={() => {
+                                    setUserView(user);
+                                    navigate('/transcriptview');
+                                  }}
+                                />
+                              </span>
                             </td>
                           </tr>
                         );

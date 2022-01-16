@@ -17,7 +17,6 @@ const SearchTargetProvider = props => {
           const response = await axios.get(url);
 
           setUsersSelect(response.data.data);
-          console.log(response.data.data);
         } catch (error) {
           console.log(error);
         }
