@@ -141,15 +141,6 @@ const SearchTargetTranscript = () => {
                               <span className="helpdesk-label-select">
                                 Cycle to move credits to
                               </span>
-                              {/* <Button
-                                color="info"
-                                onClick={() => {
-                                  setUserView(user);
-                                  navigate('/transcriptview');
-                                }}
-                              >
-                                Manipulate
-                              </Button> */}
                             </td>
                             <td>
                               <span className="helpdeks-button-icon">
