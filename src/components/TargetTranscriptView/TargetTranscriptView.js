@@ -75,7 +75,7 @@ const TargetTranscriptView = () => {
   );
 
   return (
-    <Container className="helpdesk-transcript-view">
+    <Container className="helpdesk-transcript-view" id="transcriptView">
       <Panel>
         <Panel.Body>
           <div className="text-center helpdesk-transcript-title">
@@ -376,14 +376,21 @@ const TargetTranscriptView = () => {
               <Link to="#">Did you know's</Link>
               <div className="helpdesk-transcript-buttons">
                 <Button
+                  className="margin-bottom-button"
                   shape="outline"
                   color="info"
                   onClick={handleNavegateMain}
                 >
                   Back to manipulation
                 </Button>
-                <Button>Test Reallocation</Button>
-                <Button color="info" onClick={openModal}>
+                <Button className="margin-bottom-button">
+                  Test Reallocation
+                </Button>
+                <Button
+                  className="margin-bottom-button"
+                  color="info"
+                  onClick={openModal}
+                >
                   Apply Manipulation
                 </Button>
               </div>
@@ -398,12 +405,18 @@ const TargetTranscriptView = () => {
                   </p>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button onClick={closeModal} color="danger">
-                    Cancel
-                  </Button>
-                  <Button onClick={handleNavegateMain} color="info">
-                    Apply manipulation
-                  </Button>
+                  <div className="helpdesk-modal-button-wrapper">
+                    <Button onClick={closeModal} color="danger">
+                      Cancel
+                    </Button>
+                    <Button
+                      className="margin-bottom-button"
+                      onClick={handleNavegateMain}
+                      color="info"
+                    >
+                      Apply manipulation
+                    </Button>
+                  </div>
                 </Modal.Footer>
               </Modal>
             </Col>

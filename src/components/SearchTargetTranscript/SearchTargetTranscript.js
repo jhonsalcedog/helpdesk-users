@@ -150,7 +150,7 @@ const SearchTargetTranscript = () => {
                                   title="Manipulate"
                                   onClick={() => {
                                     setUserView(user);
-                                    navigate('/transcriptview');
+                                    navigate('/transcriptview#transcriptview');
                                   }}
                                 />
                               </span>

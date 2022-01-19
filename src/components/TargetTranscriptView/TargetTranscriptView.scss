@@ -187,13 +187,16 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    gap: 15px;
+
+    .margin-bottom-button {
+      margin-bottom: 15px;
+    }
   }
+
   .helpdesk-transcript-buttons {
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
-    gap: 15px;
     width: 100%;
 
     .eui-btn {
@@ -206,7 +209,10 @@
   .helpdesk-transcript-table-bottom {
     flex-direction: column-reverse;
     align-items: center;
-    gap: 20px;
+
+    .margin-bottom-button {
+      margin-bottom: 15px;
+    }
   }
 
   .helpdesk-transcript-popover.eui-popover {
@@ -236,6 +242,18 @@
       .popover-textfield {
         width: 55px;
       }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .helpdesk-modal-button-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .margin-bottom-button {
+      margin-bottom: 10px !important;
+      margin-left: 0 !important;
     }
   }
 }
