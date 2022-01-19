@@ -8,17 +8,23 @@ export const SearchTargetContext = createContext();
 const SearchTargetProvider = props => {
   const [usersSelect, setUsersSelect] = useState([]);
   const [userView, setUserView] = useState({});
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState(false);
 
   useEffect(() => {
     if (query) {
+      setLoading(true);
       const getUsers = async () => {
         const url = 'https://reqres.in/api/unknown?page=1';
         try {
           const response = await axios.get(url);
 
           setUsersSelect(response.data.data);
+
+          setLoading(false);
         } catch (error) {
+          setLoading(false);
+
           console.log(error);
         }
       };
@@ -29,7 +35,9 @@ const SearchTargetProvider = props => {
   return (
     <SearchTargetContext.Provider
       value={{
+        loading,
         usersSelect,
+        setUsersSelect,
         userView,
         setUserView,
         query,

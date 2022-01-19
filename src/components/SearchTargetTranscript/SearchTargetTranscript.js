@@ -12,16 +12,17 @@ import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 import Icon from 'emerald-ui/lib/Icon';
 import IconButton from 'emerald-ui/lib/IconButton';
+import Spinner from 'emerald-ui/lib/Spinner';
 
 import { SearchTargetContext } from '../../context/SearchTargetContext';
 
 import './SearchTargetTranscript.scss';
 
 const SearchTargetTranscript = () => {
-  const { usersSelect, setUserView, query, setQuery } =
-    useContext(SearchTargetContext);
-
   let navigate = useNavigate();
+
+  const { usersSelect, setUserView, query, setQuery, loading } =
+    useContext(SearchTargetContext);
 
   const [resize, setResize] = useState(null);
 
@@ -44,7 +45,8 @@ const SearchTargetTranscript = () => {
     };
   }, []);
 
-  const handleSearch = () => {
+  const handleSearchSubmit = e => {
+    e.preventDefault();
     setQuery(true);
   };
 
@@ -56,7 +58,7 @@ const SearchTargetTranscript = () => {
             <Panel.Body>
               <h1 className="helpdesk-title">Transcript Manipulation</h1>
 
-              <form className="helpdesk-form">
+              <form className="helpdesk-form" onSubmit={handleSearchSubmit}>
                 <SingleSelect label="State" id="s1">
                   <option value="first">First</option>
                   <option value="second">Second</option>
@@ -76,7 +78,7 @@ const SearchTargetTranscript = () => {
                   <option value="fourth">Fourth</option>
                 </SingleSelect>
                 <TextField label="License Number" />
-                <Button color="info" onClick={handleSearch}>
+                <Button color="info" type="submit">
                   Search
                 </Button>
               </form>
@@ -84,136 +86,146 @@ const SearchTargetTranscript = () => {
           </Panel>
         </Col>
       </Row>
-      {query && (
+      {loading ? (
+        <Row>
+          <Col className="text-center">
+            <Spinner size="lg" />
+          </Col>
+        </Row>
+      ) : (
         <>
-          <Row>
-            <Col xs={12} md={12} lg={12}>
-              {resize ? (
-                <div className="helpdesk-table">
-                  <Table>
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>License</th>
-                        <th>Profession</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th className="not-padding">Manipulate</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {usersSelect.map(user => {
-                        return (
-                          <tr key={user.id}>
-                            <td>
-                              <span className="helpdeks-td">{user.name}</span>
-                            </td>
-                            <td>
-                              <span className="helpdeks-td">
-                                {user.pantone_value}
-                              </span>
-                            </td>
-                            <td>
-                              <span className="helpdeks-td">{user.name}</span>{' '}
-                            </td>
-                            <td className="helpdesk-td-select">
-                              <SingleSelect ariaLabel="Select Cycle to move credits from">
-                                <option value="first">First</option>
-                                <option value="second">Second</option>
-                                <option value="third">Third</option>
-                                <option value="fourth">Fourth</option>
-                              </SingleSelect>
-                              <span className="helpdesk-label-select">
-                                Cycle to move credits from
-                              </span>
-                            </td>
-                            <td className="text-center">
-                              <span className="helpdeks-td">To</span>
-                            </td>
-                            <td className="helpdesk-td-select td-select-wrapper">
-                              <SingleSelect ariaLabel="Select Cycle to move credits to">
-                                <option value="first">First</option>
-                                <option value="second">Second</option>
-                                <option value="third">Third</option>
-                                <option value="fourth">Fourth</option>
-                              </SingleSelect>
-                              <span className="helpdesk-label-select">
-                                Cycle to move credits to
-                              </span>
-                            </td>
-                            <td>
-                              <span className="helpdeks-button-icon">
-                                <IconButton
-                                  ariaLabel="Manipulate"
-                                  icon="edit_note"
-                                  title="Manipulate"
-                                  onClick={() => {
-                                    setUserView(user);
-                                    navigate('/transcriptview#transcriptview');
-                                  }}
-                                />
-                              </span>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                </div>
-              ) : (
-                <>
-                  {usersSelect.map(user => {
-                    return (
-                      <Card className="helpdesk-target-card" key={user.id}>
-                        <h1 className="eui-card-title">{user.name}</h1>
-                        <h2 className="eui-card-subtitle">
-                          {user.pantone_value}
-                        </h2>
-                        <h2 className="eui-card-subtitle">{user.name}</h2>
-                        <div className="helpdesk-target-select">
-                          <SingleSelect
-                            ariaLabel="Select Cycle to move credits from"
-                            label="Select Cycle to move credits from"
+          {query && (
+            <Row>
+              <Col xs={12} md={12} lg={12}>
+                {resize ? (
+                  <div className="helpdesk-table">
+                    <Table>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>License</th>
+                          <th>Profession</th>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                          <th className="not-padding">Manipulate</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {usersSelect.map(user => {
+                          return (
+                            <tr key={user.id}>
+                              <td>
+                                <span className="helpdeks-td">{user.name}</span>
+                              </td>
+                              <td>
+                                <span className="helpdeks-td">
+                                  {user.pantone_value}
+                                </span>
+                              </td>
+                              <td>
+                                <span className="helpdeks-td">{user.name}</span>{' '}
+                              </td>
+                              <td className="helpdesk-td-select">
+                                <SingleSelect ariaLabel="Select Cycle to move credits from">
+                                  <option value="first">First</option>
+                                  <option value="second">Second</option>
+                                  <option value="third">Third</option>
+                                  <option value="fourth">Fourth</option>
+                                </SingleSelect>
+                                <span className="helpdesk-label-select">
+                                  Cycle to move credits from
+                                </span>
+                              </td>
+                              <td className="text-center">
+                                <span className="helpdeks-td">To</span>
+                              </td>
+                              <td className="helpdesk-td-select td-select-wrapper">
+                                <SingleSelect ariaLabel="Select Cycle to move credits to">
+                                  <option value="first">First</option>
+                                  <option value="second">Second</option>
+                                  <option value="third">Third</option>
+                                  <option value="fourth">Fourth</option>
+                                </SingleSelect>
+                                <span className="helpdesk-label-select">
+                                  Cycle to move credits to
+                                </span>
+                              </td>
+                              <td>
+                                <span className="helpdeks-button-icon">
+                                  <IconButton
+                                    ariaLabel="Manipulate"
+                                    icon="edit_note"
+                                    title="Manipulate"
+                                    onClick={() => {
+                                      setUserView(user);
+                                      navigate(
+                                        '/transcriptview#transcriptview'
+                                      );
+                                    }}
+                                  />
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
+                ) : (
+                  <>
+                    {usersSelect.map(user => {
+                      return (
+                        <Card className="helpdesk-target-card" key={user.id}>
+                          <h1 className="eui-card-title">{user.name}</h1>
+                          <h2 className="eui-card-subtitle">
+                            {user.pantone_value}
+                          </h2>
+                          <h2 className="eui-card-subtitle">{user.name}</h2>
+                          <div className="helpdesk-target-select">
+                            <SingleSelect
+                              ariaLabel="Select Cycle to move credits from"
+                              label="Select Cycle to move credits from"
+                            >
+                              <option value="first">First</option>
+                              <option value="second">Second</option>
+                              <option value="third">Third</option>
+                              <option value="fourth">Fourth</option>
+                            </SingleSelect>
+                            <span className="helpdesk-greater-than-sign-position-mobile text-center">
+                              <Icon
+                                name="arrow_downward"
+                                style={{ fontSize: '24px' }}
+                                className="text-light"
+                              />
+                            </span>
+                            <SingleSelect
+                              ariaLabel="Cycle to move credits to"
+                              label="Select Cycle to move credits to"
+                            >
+                              <option value="first">First</option>
+                              <option value="second">Second</option>
+                              <option value="third">Third</option>
+                              <option value="fourth">Fourth</option>
+                            </SingleSelect>
+                          </div>
+                          <Button
+                            color="info"
+                            onClick={() => {
+                              setUserView(user);
+                              navigate('/transcriptview');
+                            }}
                           >
-                            <option value="first">First</option>
-                            <option value="second">Second</option>
-                            <option value="third">Third</option>
-                            <option value="fourth">Fourth</option>
-                          </SingleSelect>
-                          <span className="helpdesk-greater-than-sign-position-mobile text-center">
-                            <Icon
-                              name="arrow_downward"
-                              style={{ fontSize: '24px' }}
-                              className="text-light"
-                            />
-                          </span>
-                          <SingleSelect
-                            ariaLabel="Cycle to move credits to"
-                            label="Select Cycle to move credits to"
-                          >
-                            <option value="first">First</option>
-                            <option value="second">Second</option>
-                            <option value="third">Third</option>
-                            <option value="fourth">Fourth</option>
-                          </SingleSelect>
-                        </div>
-                        <Button
-                          color="info"
-                          onClick={() => {
-                            setUserView(user);
-                            navigate('/transcriptview');
-                          }}
-                        >
-                          Manipulate
-                        </Button>
-                      </Card>
-                    );
-                  })}
-                </>
-              )}
-            </Col>
-          </Row>
+                            Manipulate
+                          </Button>
+                        </Card>
+                      );
+                    })}
+                  </>
+                )}
+              </Col>
+            </Row>
+          )}
         </>
       )}
     </Container>
