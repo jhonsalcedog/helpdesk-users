@@ -6,8 +6,6 @@ import Container from 'emerald-ui/lib/Container';
 import Modal from 'emerald-ui/lib/Modal';
 import Row from 'emerald-ui/lib/Row';
 import Col from 'emerald-ui/lib/Col';
-import SingleSelect from 'emerald-ui/lib/SingleSelect';
-
 import Button from 'emerald-ui/lib/Button';
 
 import TranscriptViewTable from './TranscriptViewTable';
@@ -50,36 +48,16 @@ const TargetTranscriptView = () => {
           </div>
           <Row>
             <Col md={6} lg={6} xs={12}>
-              <div className="text-center helpdesk-transcript-selec">
-                <SingleSelect label="Move credits from" id="s1">
-                  <option value="first">Selected Cycle 1</option>
-                  <option value="second">Selected Cycle 2</option>
-                  <option value="third">Selected Cycle 3</option>
-                  <option value="fourth">Selected Cycle 4</option>
-                </SingleSelect>
-                <p className="helpdesk-transcript-space-p">
-                  Compliance Status:
-                  <span className="text-success helpdesk-transcript-span">
-                    Complete
-                  </span>
-                </p>
-              </div>
-              <TranscriptViewTable usersData={dbfirst} />
+              <TranscriptViewTable
+                usersData={dbfirst}
+                complianceStatus={true}
+              />
             </Col>
             <Col md={6} lg={6}>
-              <div className="text-center">
-                <SingleSelect label="Move credits to" id="s2">
-                  <option value="first">Selected Cycle 1</option>
-                  <option value="second">Selected Cycle 2</option>
-                  <option value="third">Selected Cycle 3</option>
-                  <option value="fourth">Selected Cycle 4</option>
-                </SingleSelect>
-                <p className="helpdesk-transcript-space-p">
-                  Compliance Status:{' '}
-                  <span className="text-danger">Not Complete</span>
-                </p>
-              </div>
-              <TranscriptViewTable usersData={dbsecond} />
+              <TranscriptViewTable
+                usersData={dbsecond}
+                complianceStatus={false}
+              />
             </Col>
           </Row>
           <Row>
