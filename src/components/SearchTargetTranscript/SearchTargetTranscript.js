@@ -27,15 +27,6 @@ const SearchTargetTranscript = () => {
 
   const [isMobile, setIsMobile] = useState(null);
 
-  const handleWindowResize = () => {
-    if (window.innerWidth > 992) {
-      setIsMobile(true);
-    }
-    if (window.innerWidth <= 991) {
-      setIsMobile(false);
-    }
-  };
-
   useEffect(() => {
     handleWindowResize();
 
@@ -49,6 +40,15 @@ const SearchTargetTranscript = () => {
   const handleSearchSubmit = e => {
     e.preventDefault();
     setQuery(true);
+  };
+
+  const handleWindowResize = () => {
+    if (window.innerWidth > 992) {
+      setIsMobile(false);
+    }
+    if (window.innerWidth <= 991) {
+      setIsMobile(true);
+    }
   };
 
   return (
@@ -98,7 +98,7 @@ const SearchTargetTranscript = () => {
         <If condition={query}>
           <Row>
             <Col xs={12} md={12} lg={12}>
-              <If condition={isMobile}>
+              <If condition={!isMobile}>
                 <div className="helpdesk-table">
                   <Table>
                     <thead>
@@ -172,7 +172,7 @@ const SearchTargetTranscript = () => {
                   </Table>
                 </div>
               </If>
-              <If condition={!isMobile}>
+              <If condition={isMobile}>
                 {usersSelect.map(user => {
                   return (
                     <Card className="helpdesk-target-card" key={user.id}>
