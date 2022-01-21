@@ -14,8 +14,10 @@ const SearchTargetProvider = props => {
   useEffect(() => {
     if (query) {
       setLoading(true);
+
       const getUsers = async () => {
         const url = 'https://reqres.in/api/unknown?page=1';
+
         try {
           const response = await axios.get(url);
 

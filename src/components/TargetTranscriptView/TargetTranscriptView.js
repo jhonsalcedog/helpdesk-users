@@ -24,6 +24,7 @@ const TargetTranscriptView = () => {
   let navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState({ show: false });
+  const [showCoursesOverlay, setShowCoursesOverlay] = useState({});
 
   const openModal = () => {
     setIsOpen({ show: true });
@@ -36,6 +37,26 @@ const TargetTranscriptView = () => {
   const handleNavegateMain = () => {
     setQuery(false);
     navigate('/');
+  };
+
+  const openPopover = id => {
+    setShowCoursesOverlay({ [id]: true });
+  };
+
+  const closePopover = id => {
+    setShowCoursesOverlay({ ...showCoursesOverlay, [id]: false });
+  };
+
+  const handleToggle = (id, show, event) => {
+    // event.stopPropagation();
+    let showCoursesOverlayNew = { [id]: show };
+    if (!show) {
+      showCoursesOverlayNew = {
+        ...showCoursesOverlay,
+        ...showCoursesOverlayNew
+      };
+    }
+    return setShowCoursesOverlay(showCoursesOverlayNew);
   };
 
   return (
@@ -51,12 +72,20 @@ const TargetTranscriptView = () => {
               <TranscriptViewTable
                 usersData={dbfirst}
                 complianceStatus={true}
+                showCoursesOverlay={showCoursesOverlay}
+                openPopover={openPopover}
+                closePopover={closePopover}
+                handleToggle={handleToggle}
               />
             </Col>
             <Col md={6} lg={6}>
               <TranscriptViewTable
                 usersData={dbsecond}
                 complianceStatus={false}
+                showCoursesOverlay={showCoursesOverlay}
+                openPopover={openPopover}
+                closePopover={closePopover}
+                handleToggle={handleToggle}
               />
             </Col>
           </Row>

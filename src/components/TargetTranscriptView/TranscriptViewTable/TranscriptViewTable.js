@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Row from 'emerald-ui/lib/Row';
@@ -11,29 +11,14 @@ import SingleSelect from 'emerald-ui/lib/SingleSelect';
 import Button from 'emerald-ui/lib/Button';
 import { If } from 'emerald-ui/lib/Conditionals';
 
-const TranscriptViewTable = ({ usersData, complianceStatus }) => {
-  const [showCoursesOverlay, setShowCoursesOverlay] = useState({});
-
-  const openPopover = id => {
-    setShowCoursesOverlay({ [id]: true });
-  };
-
-  const closePopover = id => {
-    setShowCoursesOverlay({ ...showCoursesOverlay, [id]: false });
-  };
-
-  const handleToggle = (id, show, event) => {
-    // event.stopPropagation();
-    let showCoursesOverlayNew = { [id]: show };
-    if (!show) {
-      showCoursesOverlayNew = {
-        ...showCoursesOverlay,
-        ...showCoursesOverlayNew
-      };
-    }
-    return setShowCoursesOverlay(showCoursesOverlayNew);
-  };
-
+const TranscriptViewTable = ({
+  usersData,
+  complianceStatus,
+  showCoursesOverlay,
+  handleToggle,
+  openPopover,
+  closePopover
+}) => {
   const classStatus =
     complianceStatus === true ? 'text-success' : 'text-danger';
 
@@ -188,7 +173,11 @@ const TranscriptViewTable = ({ usersData, complianceStatus }) => {
 
 TranscriptViewTable.propTypes = {
   usersData: PropTypes.arrayOf(PropTypes.object),
-  complianceStatus: PropTypes.bool
+  complianceStatus: PropTypes.bool,
+  showCoursesOverlay: PropTypes.object,
+  handleToggle: PropTypes.func,
+  openPopover: PropTypes.func,
+  closePopover: PropTypes.func
 };
 
 export default TranscriptViewTable;
