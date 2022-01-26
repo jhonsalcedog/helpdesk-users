@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Panel from 'emerald-ui/lib/Panel';
 import Container from 'emerald-ui/lib/Container';
 import Row from 'emerald-ui/lib/Row';
 import Col from 'emerald-ui/lib/Col';
+import Panel from 'emerald-ui/lib/Panel';
 import Table from 'emerald-ui/lib/Table';
 import Card from 'emerald-ui/lib/Card';
 import SingleSelect from 'emerald-ui/lib/SingleSelect';
+import Pager from 'emerald-ui/lib/Pager';
 import TextField from 'emerald-ui/lib/TextField';
 import Button from 'emerald-ui/lib/Button';
 import Icon from 'emerald-ui/lib/Icon';
@@ -22,8 +23,11 @@ import './SearchTargetTranscript.scss';
 const SearchTargetTranscript = () => {
   let navigate = useNavigate();
 
-  const { usersSelect, setUserView, query, setQuery, loading } =
+  const { usersSelect, setUserView, query, setQuery, loading, pager } =
     useContext(SearchTargetContext);
+
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(5);
 
   const [isMobile, setIsMobile] = useState(null);
 
@@ -39,7 +43,7 @@ const SearchTargetTranscript = () => {
 
   const handleSearchSubmit = e => {
     e.preventDefault();
-    setQuery(true);
+    setQuery('?page=1&per_page=5');
   };
 
   const handleWindowResize = () => {
@@ -49,6 +53,18 @@ const SearchTargetTranscript = () => {
     if (window.innerWidth <= 991) {
       setIsMobile(true);
     }
+  };
+
+  const handleLimitChange = limit => {
+    setLimit(limit);
+    setOffset(0);
+    setQuery(`?page=1&per_page=${limit}`);
+  };
+
+  const handlePageChange = (action, offset) => {
+    const pageNumber = offset / limit + 1;
+    setOffset(offset);
+    setQuery(`?page=${pageNumber}&per_page=${limit}`);
   };
 
   return (
@@ -221,6 +237,17 @@ const SearchTargetTranscript = () => {
                   );
                 })}
               </If>
+              <Panel>
+                <Panel.Body>
+                  <Pager
+                    offset={offset}
+                    limit={limit}
+                    onPageChange={handlePageChange}
+                    onLimitChange={handleLimitChange}
+                    total={pager.total}
+                  />
+                </Panel.Body>
+              </Panel>
             </Col>
           </Row>
         </If>
