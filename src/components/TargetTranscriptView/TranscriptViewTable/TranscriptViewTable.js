@@ -24,7 +24,7 @@ const TranscriptViewTable = ({
 
   return (
     <>
-      <div className="text-center helpdesk-transcript-selec">
+      <div className="text-center helpdesk-transcript-select">
         <SingleSelect label="Move credits from" id="s1">
           <option value="first">Selected Cycle 1</option>
           <option value="second">Selected Cycle 2</option>

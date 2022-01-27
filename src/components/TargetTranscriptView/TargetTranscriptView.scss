@@ -15,17 +15,19 @@
     padding-left: 5px;
   }
 
-  .helpdesk-transcript-table th:nth-child(2) {
-    background-color: #0073e9;
-    color: #fff;
-    text-align: center;
-  }
+  //table
 
   .helpdesk-transcript-table-wrapper {
     overflow: auto;
     border: 1px solid #e6e8ec;
     border-bottom: 0;
     margin-bottom: 40px;
+  }
+
+  .helpdesk-transcript-table th:nth-child(2) {
+    background-color: #0073e9;
+    color: #fff;
+    text-align: center;
   }
 
   .helpdesk-transcript-table th:nth-child(3) {
@@ -72,6 +74,11 @@
     max-width: 300px;
   }
 
+  .helpdesk-transcript-table-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .helpdesk-transcript-table-td-total {
     text-transform: capitalize;
   }
@@ -97,11 +104,6 @@
     width: 120px;
     padding: 5px;
     font-size: 1.2rem;
-  }
-
-  .helpdesk-transcript-table-bottom {
-    display: flex;
-    justify-content: space-between;
   }
 
   .helpdesk-popover-table.eui-table > tbody > tr > td {
